@@ -55,6 +55,6 @@ public class HTTPUtil {
 	public static void main(String[] args) {
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("clientUrl", "httputil");
-		post("http://sheefee.com:8080/", params);
+		post("http://localhost:8080/", params);
 	}
 }
