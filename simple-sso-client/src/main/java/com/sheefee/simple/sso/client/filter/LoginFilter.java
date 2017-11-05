@@ -32,6 +32,12 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) res;
 		HttpSession session = request.getSession();
+
+		// 公开请求，即子系统提供的公开请求 -> 放行
+		if (request.getRequestURI().startsWith("/b/pub")) {
+			chain.doFilter(req, res);
+			return ;
+		}
 		
 		// 已经登录，放行
 		if (session.getAttribute(AuthConst.IS_LOGIN) != null) {
